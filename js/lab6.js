@@ -29,6 +29,7 @@ function isInt(investYears) {
 }
 
 // COLLECT VALUES FROM THE USER
+// Prompt user for investment amount
 investment = parseFloat(prompt('Enter investment amount as xxxx.xx'));
 // Verify investment amount is in correct format, and that it is > $0
 if ((isFloat(investment) === false) || (parseFloat(investment) <= 0)) {
@@ -39,6 +40,7 @@ if ((isFloat(investment) === false) || (parseFloat(investment) <= 0)) {
 // Round investment amount to 2 decimals 
 investment = Math.round(parseFloat(investment * 100)) / 100;
 
+// Prompt user for interest rate
 rate = parseFloat(prompt('Enter interest rate as x.x'));
 // Verify that interest rate is in correct format and that it is between 0% and 6%
 if ((isFloat(rate) === false) || (parseInt(rate) < 0 || parseInt(rate) > 6)) {
@@ -49,16 +51,10 @@ if ((isFloat(rate) === false) || (parseInt(rate) < 0 || parseInt(rate) > 6)) {
 // Round interest rate to one decimal place
 rate = Math.round(parseFloat(rate * 10)) / 10;
 
-years = parseInt(prompt('Enter the number of years you want to invest for'));
-
-// Check if years entered is a whole integer. If not, prompt user to re-enter value
-while (isInt(years) === false) {
-    years = window.prompt("Enter number of years as a whole number.");
-}
-years = parseInt(years,10);
-
+// Prompt user for number of years investment is for
+years = parseFloat(prompt('Enter the number of years you want to invest for'));
 // Vefity that number of years entered is between 1 an 30. If not, prompt user to enter a valid entry
-while ((years >= 1 && years <= 30) !== true) {
+while ((years >= 1 && years <= 30) === false) {
     years = window.prompt("Entry not valid. Number of years must be between 1 and 30.");
 }
 
@@ -69,7 +65,7 @@ for (let i = 0; i < years; i++) {
 }
 
 // DISPLAY RESULT
-document.write(`Investment amount: $${investment.toFixed(2)}<br>`);
-document.write(`Interest rate: ${rate.toFixed(2)}%<br>`);
-document.write(`Years: ${years}<br>`);
-document.write(`Future value: $${futureValue.toFixed(2)}`);
+document.write(`Investment amount: <b>$${investment.toFixed(2)}</b><br>`);
+document.write(`Interest rate: <b>${rate.toFixed(2)}%</b><br>`);
+document.write(`Years: <b>${years}</b><br>`);
+document.write(`Future value: <b>$${futureValue.toFixed(2)}</b>`);
